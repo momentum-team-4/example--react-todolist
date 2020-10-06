@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
 
-function App() {
+function App () {
+  const [todoItems, setTodoItems] = useState([
+  ])
+  const [newItem, setNewItem] = useState('')
+
+  // return React.createElement('div', { className: 'App' }, [
+  //   React.createElement('h1', {}, 'Todo List'),
+  //   React.createElement('ul', {}, todoItems.map(item => (
+  //     React.createElement('li', {}, item)
+  //   )))
+  // ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className='App'>
+      <h1>Todo List</h1>
+      <p>{todoItems.length} item{todoItems.length !== 1 && 's'}</p>
+      <ul>
+        {todoItems.map((item, idx) => <li key={idx}>{item}</li>)}
+      </ul>
+      <h2>Add an item</h2>
+      <div>
+        <input
+          type='text' placeholder='Get it done'
+          value={newItem}
+          onChange={event => setNewItem(event.target.value)}
+        />
+      </div>
+      <div>
+        <button onClick={() => {
+          const newItems = todoItems.concat(newItem)
+          setTodoItems(newItems)
+          setNewItem('')
+        }}
         >
-          Learn React
-        </a>
-      </header>
+        Add an item
+        </button>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
