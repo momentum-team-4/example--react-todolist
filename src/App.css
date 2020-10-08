@@ -2,3 +2,27 @@
   margin: 2rem auto;
   max-width: 40rem;
 }
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.app-header > * {
+  margin: 0 1rem 0 0;
+}
+
+.todo-items {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.todo-items li {
+  margin: 0.5rem 0;
+}
+
+.todo-items .done {
+  color: #999999;
+  text-decoration: line-through;
+}
